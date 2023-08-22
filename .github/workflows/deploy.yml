@@ -1,4 +1,4 @@
-name: Deploy Front App
+name: Deploy React App
 
 on:
   push:
@@ -41,5 +41,5 @@ jobs:
           password: ${{ secrets.FTP_PWD }}
           port: ${{ secrets.FTP_PORT }}
           script: |
-           cd /home/black9769/fe
-           echo -e "`ls -al | grep dist`\n"
+            cd /home/black9769/fe
+            echo -e "`ls -al | grep build`\n"
