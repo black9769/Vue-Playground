@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.FTP_NAME }}
           password: ${{ secrets.FTP_PWD }}
           port: ${{ secrets.FTP_PORT }}
-          source: "build"
+          source: "dist"
           target: '/home/black9769/fe'
 
       - name: Deploy Confirm
