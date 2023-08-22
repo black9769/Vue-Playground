@@ -13,6 +13,17 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Deploy Confirm
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_NAME }}
+          password: ${{ secrets.FTP_PWD }}
+          port: ${{ secrets.FTP_PORT }}
+          script: |
+            cd /home/black9769/fe
+            echo -e "`ls -al | grep build`\n"
+
       - name: Check Node v
         run: node -v
 
@@ -33,13 +44,3 @@ jobs:
           source: "build"
           target: '/home/black9769/fe'
 
-      - name: Deploy Confirm
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_NAME }}
-          password: ${{ secrets.FTP_PWD }}
-          port: ${{ secrets.FTP_PORT }}
-          script: |
-            cd /home/black9769/fe
-            echo -e "`ls -al | grep build`\n"
