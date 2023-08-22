@@ -25,6 +25,16 @@ jobs:
       - name: Generate BUILD
         run: npm run build
 
+      - name: Deploy BUILD
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_NAME }}
+          password: ${{ secrets.FTP_PWD }}
+          port: ${{ secrets.FTP_PORT }}
+          source: "build"
+          target: '/home/black9769/fe'
+
       - name: Deploy Confirm
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -36,13 +46,4 @@ jobs:
             cd /home/black9769/fe
             echo -e "`ls -al | grep build`\n"
 
-      - name: Deploy BUILD
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_NAME }}
-          password: ${{ secrets.FTP_PWD }}
-          port: ${{ secrets.FTP_PORT }}
-          source: "build"
-          target: '/home/black9769/fe'
 
