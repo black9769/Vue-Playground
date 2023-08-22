@@ -1,9 +1,9 @@
-name: Deploy React App
+name: Deploy Front App
 
 on:
   push:
     branches:
-      - release
+      - master
 
 jobs:
   Build_and_Deploy:
