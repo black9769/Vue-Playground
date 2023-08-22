@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.FTP_NAME }}
           password: ${{ secrets.FTP_PWD }}
           port: ${{ secrets.FTP_PORT }}
-          source: "dist"
+          source: "build"
           target: '/home/black9769/fe'
 
       - name: Deploy Confirm
@@ -42,4 +42,4 @@ jobs:
           port: ${{ secrets.FTP_PORT }}
           script: |
            cd /home/black9769/fe
-           echo -e "`ls -al | grep build`\n"
+           echo -e "`ls -al | grep dist`\n"
