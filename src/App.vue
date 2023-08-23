@@ -1,48 +1,40 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <v-layout class="rounded rounded-md">
+    <v-navigation-drawer>
+      <v-list>
+        <v-list-item title="Navigation drawer">
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+    <v-app-bar title="Application bar"></v-app-bar>
 
-  <main>
-    11
-    <TheWelcome />
-  </main>
+    <v-main class="d-flex align-center justify-center" style="min-height: 300px;">
+      {{name}}
+    </v-main>
+  </v-layout>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script>
+import axios from "axios";
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+export default {
+  name: "main",
+  mounted() {
+    this.getUserName()
+  },
+  data () {
+    return {
+      name
+    };
+  },
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  methods: {
+    getUserName() {
+      axios.get("http://localhost:1789/api/test")
+          .then((res) => this.name = res.data)
+          .catch((err) => console.log(err))
+    }
   }
 }
-</style>
+</script>
