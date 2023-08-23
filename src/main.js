@@ -24,4 +24,5 @@ export default createVuetify({
     }
 })
 
+
 createApp(App).use(vuetify).use(pinia).mount('#app')

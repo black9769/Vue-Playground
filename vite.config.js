@@ -11,6 +11,9 @@ export default defineConfig({
   build :{
     outDir: "build"
   },
+  server:{
+    proxy: 'http://localhost:1789/api'
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
