@@ -12,7 +12,7 @@ export default defineConfig({
     outDir: "build"
   },
   server:{
-    proxy: 'http://localhost:1789'
+    proxy: 'http://localhost:1789/'
   },
   resolve: {
     alias: {
