@@ -9,10 +9,14 @@ export default defineConfig({
     vue(),
   ],
   build :{
-    outDir: "build"
-  },
-  server:{
-    proxy: 'http://localhost:1789/'
+    outDir: "build",
+    minify: "terser",
+    terserOptions:{
+      compress:{
+        drop_console:true,
+        drop_debugger:true
+      }
+    }
   },
   resolve: {
     alias: {

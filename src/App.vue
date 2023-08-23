@@ -11,6 +11,7 @@
 
     <v-main class="d-flex align-center justify-center" style="min-height: 300px;">
       {{name}}
+      {{env}}
     </v-main>
   </v-layout>
 </template>
@@ -25,7 +26,8 @@ export default {
   },
   data () {
     return {
-      name
+      name,
+      env: import.meta.env.VITE_TEST
     };
   },
 
