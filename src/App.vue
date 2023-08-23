@@ -31,7 +31,7 @@ export default {
 
   methods: {
     getUserName() {
-      axios.get("/test")
+      axios.get("/api/test")
           .then((res) => this.name = res.data)
           .catch((err) => console.log(err))
     }
